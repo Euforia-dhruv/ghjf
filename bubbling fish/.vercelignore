@@ -1,0 +1,9 @@
+.opencode/
+scrape/
+src/
+tools/
+node_modules/
+*.md
+_shot_*
+zz_*
+lighthouse.json

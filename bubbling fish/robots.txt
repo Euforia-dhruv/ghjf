@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /scrape/
+Disallow: /src/
+Disallow: /tools/
+
+Sitemap: https://thebubblingfish.com/sitemap.xml

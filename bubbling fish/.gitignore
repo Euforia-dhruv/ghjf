@@ -1,0 +1,6 @@
+.vercel
+.opencode/
+_shot_*.png
+lighthouse*.json
+__pycache__/
+*.pyc
