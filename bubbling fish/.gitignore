@@ -4,3 +4,4 @@ _shot_*.png
 lighthouse*.json
 __pycache__/
 *.pyc
+scrape/
