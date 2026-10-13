@@ -5,3 +5,4 @@ lighthouse*.json
 __pycache__/
 *.pyc
 scrape/
+assets/New folder/

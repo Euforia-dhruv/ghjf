@@ -18,10 +18,16 @@
     });
   }
 
-  // sticky header shadow
+  // sticky header: transparent over the hero, solid once past it
   const header = $(".site-header");
-  const onScroll = () => header && header.classList.toggle("is-scrolled", scrollY > 8);
+  const hero = $(".hero");
+  const onScroll = () => {
+    if (!header) return;
+    const limit = hero ? hero.offsetHeight - header.offsetHeight : 8;
+    header.classList.toggle("is-scrolled", scrollY > limit);
+  };
   addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll, { passive: true });
   onScroll();
 
   // hero video: desktop only — mobile keeps the poster (data, battery, LCP)
