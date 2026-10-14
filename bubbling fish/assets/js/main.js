@@ -37,17 +37,6 @@
     hv.play().catch(() => {});
   }
 
-  // hero bubbles
-  const box = $(".bubbles");
-  if (box && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    for (let i = 0; i < 14; i++) {
-      const b = document.createElement("i");
-      const size = 8 + Math.random() * 30;
-      b.style.cssText = `left:${Math.random() * 100}%;width:${size}px;height:${size}px;animation-duration:${8 + Math.random() * 12}s;animation-delay:${-Math.random() * 15}s`;
-      box.appendChild(b);
-    }
-  }
-
   // reveal on scroll — each element gets a random entrance effect
   const FX = ["", "fx-left", "fx-right", "fx-zoom", "fx-blur", "fx-tilt"];
   const io = new IntersectionObserver(
