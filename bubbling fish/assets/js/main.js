@@ -37,13 +37,6 @@
     hv.play().catch(() => {});
   }
 
-  // background video behind the glass sections — desktop only, like the hero
-  const sv = $(".scrub-video");
-  if (sv && innerWidth >= 768 && !matchMedia("(prefers-reduced-motion: reduce)").matches && !(navigator.connection && navigator.connection.saveData)) {
-    sv.src = sv.dataset.src;
-    sv.play().catch(() => {});
-  }
-
   // hero bubbles
   const box = $(".bubbles");
   if (box && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -55,12 +48,18 @@
     }
   }
 
-  // reveal on scroll
+  // reveal on scroll — each element gets a random entrance effect
+  const FX = ["", "fx-left", "fx-right", "fx-zoom", "fx-blur", "fx-tilt"];
   const io = new IntersectionObserver(
     (entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("in"), io.unobserve(e.target))),
     { threshold: 0.12 }
   );
-  $$("[data-reveal]").forEach((el) => io.observe(el));
+  $$("[data-reveal]").forEach((el) => {
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      el.classList.add(FX[Math.floor(Math.random() * FX.length)]);
+    }
+    io.observe(el);
+  });
 
   // counters
   const cio = new IntersectionObserver((entries) => {
