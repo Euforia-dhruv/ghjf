@@ -56,7 +56,8 @@
   );
   $$("[data-reveal]").forEach((el) => {
     if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      el.classList.add(FX[Math.floor(Math.random() * FX.length)]);
+      const fx = FX[Math.floor(Math.random() * FX.length)];
+      if (fx) el.classList.add(fx);
     }
     io.observe(el);
   });
@@ -114,4 +115,64 @@
 
   // footer year
   $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
+
+  // scroll-progress water line
+  const line = document.createElement("div");
+  line.className = "scroll-line";
+  line.setAttribute("aria-hidden", "true");
+  document.body.appendChild(line);
+  const bar = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    line.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
+  };
+  addEventListener("scroll", bar, { passive: true });
+  addEventListener("resize", bar, { passive: true });
+  bar();
+
+  // ambient bubble canvas — floating motes behind content
+  const canvas = document.createElement("canvas");
+  canvas.className = "bubble-canvas";
+  canvas.setAttribute("aria-hidden", "true");
+  document.body.appendChild(canvas);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    const ctx = canvas.getContext("2d");
+    let w, h, motes, raf;
+    const fit = () => {
+      w = canvas.width = innerWidth;
+      h = canvas.height = innerHeight;
+      const n = Math.round(Math.min(48, (w * h) / 34000));
+      motes = Array.from({ length: n }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 1.5 + Math.random() * 5.5,
+        s: 0.15 + Math.random() * 0.5,
+        d: Math.random() * Math.PI * 2,
+        o: 0.12 + Math.random() * 0.35,
+      }));
+    };
+    const draw = () => {
+      if (document.hidden) { raf = null; return; }
+      ctx.clearRect(0, 0, w, h);
+      for (const m of motes) {
+        m.y -= m.s;
+        m.d += 0.008;
+        m.x += Math.sin(m.d) * 0.3;
+        if (m.y < -12) { m.y = h + 12; m.x = Math.random() * w; }
+        const g = ctx.createRadialGradient(m.x - m.r / 3, m.y - m.r / 3, 0, m.x, m.y, m.r);
+        g.addColorStop(0, `rgba(255,255,255,${m.o})`);
+        g.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      raf = requestAnimationFrame(draw);
+    };
+    fit();
+    draw();
+    document.addEventListener("visibilitychange", () => { if (!document.hidden && !raf) draw(); });
+    addEventListener("resize", () => { cancelAnimationFrame(raf); raf = null; fit(); draw(); }, { passive: true });
+  }
 })();
