@@ -37,27 +37,11 @@
     hv.play().catch(() => {});
   }
 
-  // scroll-scrub video: frames advance with scroll, never autoplays
-  const zone = $(".scrub-zone"), sv = $(".scrub-video");
-  if (zone && sv && innerWidth >= 768 && !matchMedia("(prefers-reduced-motion: reduce)").matches && !(navigator.connection && navigator.connection.saveData)) {
+  // background video behind the glass sections — desktop only, like the hero
+  const sv = $(".scrub-video");
+  if (sv && innerWidth >= 768 && !matchMedia("(prefers-reduced-motion: reduce)").matches && !(navigator.connection && navigator.connection.saveData)) {
     sv.src = sv.dataset.src;
-    sv.pause();
-    let ticking = false;
-    const scrub = () => {
-      ticking = false;
-      if (!sv.duration) return;
-      const r = zone.getBoundingClientRect();
-      const span = r.height - innerHeight;
-      if (span <= 0) return;
-      const p = Math.min(1, Math.max(0, -r.top / span));
-      const t = p * sv.duration;
-      if (Math.abs(sv.currentTime - t) > 0.04) sv.currentTime = t;
-    };
-    const onScrubScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(scrub); } };
-    addEventListener("scroll", onScrubScroll, { passive: true });
-    addEventListener("resize", onScrubScroll, { passive: true });
-    sv.addEventListener("loadedmetadata", scrub);
-    scrub();
+    sv.play().catch(() => {});
   }
 
   // hero bubbles
