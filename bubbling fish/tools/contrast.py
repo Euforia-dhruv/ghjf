@@ -24,51 +24,53 @@ def ratio(fg, bg="#ffffff"):
     return round((hi + 0.05) / (lo + 0.05), 2)
 
 
-# Electric cobalt theme — every text/UI pair actually used (AA >= 4.5, UI >= 3)
-BG = "#0736bb"          # body / cream (electric cobalt canvas)
-MIST = "#052ba0"        # .section.mist
-WHITE = "#0f3fc4"       # .section.white
-CARD = "#051e77"        # --bg-card rgba(3,20,92,.72) over #0736bb (computed)
-FOOT = "#02123f"        # footer
-GRAD_A = "#0736bb"      # --grad start (cobalt)
-GRAD_B = "#8a3d00"      # --grad end (burnt tangerine)
-INPUT = "#051968"       # form input bg rgba(4,20,90,.85) over BG (computed)
-TINT = "#293375"        # tangerine-tinted pill bg over card (computed)
+# Teal-blue palette (#086288/#4D8DBA/#97D7FF/#FFEFC4) — every pair used (AA >= 4.5, UI >= 3)
+BG = "#086288"          # body / cream
+MIST = "#064f6e"        # .section.mist
+WHITE = "#076489"       # .section.white
+CARD = "#053850"        # --bg-card rgba(2,30,45,.75) over #086288 (computed)
+FOOT = "#04303f"        # footer
+GRAD_A = "#086288"      # --grad start
+GRAD_B = "#04344b"      # --grad end
+INPUT = "#052d47"       # form input bg rgba(4,40,60,.85) over BG (computed)
+TINT = "#275260"        # cream-tinted pill bg over card (computed)
 pairs = [
-    ("ink on bg", "#f5e6cb", BG),
-    ("ink-soft on bg", "#e4d3ac", BG),
-    ("ink-soft on mist", "#e4d3ac", MIST),
-    ("ink-soft on white-sec", "#e4d3ac", WHITE),
-    ("ink-soft on card", "#e4d3ac", CARD),
-    ("ink on card", "#f5e6cb", CARD),
-    ("ink on mist", "#f5e6cb", MIST),
-    ("ink on white-sec", "#f5e6cb", WHITE),
-    ("orange eyebrow/links on bg", "#ffb366", BG),
-    ("orange on card", "#ffb366", CARD),
-    ("orange on mist", "#ffb366", MIST),
-    ("orange on white-sec", "#ffb366", WHITE),
-    ("orange on grad cobalt", "#ffb366", GRAD_A),
-    ("orange on grad tangerine", "#ffb366", GRAD_B),
-    ("dark CTA: dark on tangerine", "#160b09", "#ff7900"),
-    ("dark CTA hover: dark on tangerine", "#160b09", "#ff9a33"),
-    ("dark on tangerine age badge", "#160b09", "#ff7900"),
+    ("ink on bg", "#ffefc4", BG),
+    ("ink-soft on bg", "#f3e9cb", BG),
+    ("ink-soft on mist", "#f3e9cb", MIST),
+    ("ink-soft on white-sec", "#f3e9cb", WHITE),
+    ("ink-soft on card", "#f3e9cb", CARD),
+    ("ink on card", "#ffefc4", CARD),
+    ("ink on mist", "#ffefc4", MIST),
+    ("ink on white-sec", "#ffefc4", WHITE),
+    ("sky eyebrow/links on bg", "#bfe6ff", BG),
+    ("sky on card", "#bfe6ff", CARD),
+    ("sky on mist", "#bfe6ff", MIST),
+    ("sky on white-sec", "#bfe6ff", WHITE),
+    ("sky on grad start", "#bfe6ff", GRAD_A),
+    ("sky on grad end", "#bfe6ff", GRAD_B),
+    ("links on bg", "#e0f4ff", BG),
+    ("links on white-sec", "#e0f4ff", WHITE),
+    ("dark CTA: dark on cream", "#04344b", "#ffefc4"),
+    ("dark CTA hover: dark on sky", "#04344b", "#97d7ff"),
+    ("dark on cream age badge", "#04344b", "#ffefc4"),
     ("white on grad start", "#ffffff", GRAD_A),
     ("white on grad end", "#ffffff", GRAD_B),
     ("white on footer", "#ffffff", FOOT),
     ("footer a 82% on footer", "#d1d1d1", FOOT),
-    ("tangerine hover on footer", "#ffb366", FOOT),
+    ("sky hover on footer", "#bfe6ff", FOOT),
     ("err text on card", "#ff8a80", CARD),
-    ("req orange on card", "#ffb366", CARD),
-    ("req orange on input", "#ffb366", INPUT),
-    ("ink on input bg", "#f5e6cb", INPUT),
-    ("ink outline btn over white-sec", "#f5e6cb", WHITE),
-    ("tangerine stat num on card (large)", "#ffb366", CARD),
-    ("skip: dark on tangerine", "#160b09", "#ff7900"),
-    ("focus ring tangerine vs bg (UI 3:1)", "#ff7900", BG),
-    ("focus ring tangerine vs card (UI 3:1)", "#ff7900", CARD),
-    ("day-chip orange on tint", "#ffb366", TINT),
-    ("slider-nav hover dark on tangerine", "#160b09", "#ff7900"),
-    ("outline btn border vs bg (UI 3:1)", "#7793d3", BG),
+    ("req sky on card", "#bfe6ff", CARD),
+    ("req sky on input", "#bfe6ff", INPUT),
+    ("ink on input bg", "#ffefc4", INPUT),
+    ("ink outline btn over white-sec", "#ffefc4", WHITE),
+    ("sky stat num on card (large)", "#97d7ff", CARD),
+    ("skip: dark on cream", "#04344b", "#ffefc4"),
+    ("focus ring cream vs bg (UI 3:1)", "#ffefc4", BG),
+    ("focus ring cream vs card (UI 3:1)", "#ffefc4", CARD),
+    ("day-chip sky on tint", "#bfe6ff", TINT),
+    ("slider-nav hover dark on cream", "#04344b", "#ffefc4"),
+    ("outline btn border vs bg (UI 3:1)", "#8fb7cb", BG),
 ]
 for name, fg, bg in pairs:
     r = ratio(fg, bg)
