@@ -103,11 +103,9 @@ ul { padding-left: 1.2em; }
 .site-header {
   position: sticky; top: 0; z-index: 60;
   background: linear-gradient(rgba(3, 10, 23, .6), rgba(3, 10, 23, 0));
-  border-bottom: 1px solid transparent; transition: box-shadow .25s, border-color .25s;
 }
 .site-header.is-scrolled {
   background: rgba(3, 10, 23, .78); backdrop-filter: blur(12px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, .5); border-bottom-color: rgba(255, 255, 255, .14);
 }
 .nav-wrap { display: flex; align-items: center; justify-content: space-between; min-height: var(--nav-h); gap: 1rem; }
 .brand { display: flex; align-items: center; gap: .7rem; color: var(--ink); }
@@ -154,10 +152,6 @@ ul { padding-left: 1.2em; }
 .hero-video {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; z-index: 0;
-}
-.hero .video-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  background: radial-gradient(circle at 50% 42%, rgba(3, 10, 23, .1) 30%, rgba(3, 10, 23, .55) 100%);
 }
 .hero .container { position: relative; z-index: 3; max-width: 800px; text-shadow: 0 4px 24px rgba(0, 0, 0, .4); }
 .hero-content { max-width: 800px; }
@@ -238,8 +232,8 @@ ul { padding-left: 1.2em; }
   display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s, border-color .25s;
 }
 .program-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: rgba(0, 240, 255, .4); }
-.program-card .thumb { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: linear-gradient(135deg, #0a192f, #123a6b); }
-.program-card .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 7%; transition: transform .5s; }
+.program-card .thumb { position: relative; aspect-ratio: 1; overflow: hidden; }
+.program-card .thumb img { width: 100%; height: 100%; object-fit: contain; padding: 9%; transition: transform .5s; }
 .program-card:hover .thumb img { transform: scale(1.06); }
 .program-card .age {
   position: absolute; top: .8rem; left: .8rem; background: var(--primary); color: var(--bg-deep);
@@ -270,6 +264,24 @@ ul { padding-left: 1.2em; }
   .split.wide-left { grid-template-columns: 1.1fr .9fr; align-items: start; }
 }
 .split img.rounded { border-radius: 28px; box-shadow: var(--shadow-lg); width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; }
+
+/* ── scroll-scrub video zone (home) ─────────────────────────── */
+.scrub-zone { position: relative; }
+.scrub-bg { position: absolute; inset: 0; overflow: hidden; z-index: 0; background: url("../img/fish-poster.webp") center / cover; }
+.scrub-bg video { position: sticky; top: 0; width: 100%; height: 100vh; object-fit: cover; }
+.scrub-dim { position: absolute; inset: 0; background: rgba(3, 10, 23, .45); }
+.scrub-bg::after { content: ""; position: absolute; inset: auto 0 0 0; height: 16vh; background: linear-gradient(transparent, #030a17); }
+.scrub-zone > .section { background: transparent; }
+/* keep heading/lead text legible over moving water */
+.scrub-zone .section-head h2, .scrub-zone .section-head .lead, .scrub-zone .split h2, .scrub-zone .split .lead { color: #fff; }
+.scrub-zone .section-head .lead, .scrub-zone .split .lead { color: rgba(255, 255, 255, .88); }
+/* About split was light-themed — put its text column on a glass panel */
+.scrub-zone .split > div:last-child {
+  background: rgba(8, 20, 38, .55); border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: var(--r); padding: clamp(1.4rem, 3vw, 2.2rem); backdrop-filter: blur(14px);
+}
+.scrub-zone .split { color: #fff; }
+.scrub-zone .checklist li { color: rgba(255, 255, 255, .92); }
 .quote {
   border-left: 4px solid var(--teal); background: var(--bg-card); border-radius: 0 var(--r-sm) var(--r-sm) 0;
   padding: 1.1rem 1.3rem; font-style: italic; color: var(--ink-soft); margin: 1.4rem 0;
