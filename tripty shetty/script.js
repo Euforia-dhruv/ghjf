@@ -1,9 +1,6 @@
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-const header = $("#header");
-addEventListener("scroll", () => header.classList.toggle("is-scrolled", scrollY > 20));
-
 const nav = $("#nav");
 const toggle = $("#navToggle");
 if (toggle) {
@@ -19,38 +16,6 @@ if (toggle) {
     })
   );
 }
-
-const io = new IntersectionObserver(
-  (entries) =>
-    entries.forEach((e) => {
-      if (!e.isIntersecting) return;
-      e.target.classList.add("is-visible");
-      io.unobserve(e.target);
-    }),
-  { threshold: 0.12 }
-);
-$$(".reveal").forEach((el) => io.observe(el));
-
-const fmt = (n) => n.toLocaleString("en-IN");
-const countIO = new IntersectionObserver(
-  (entries) =>
-    entries.forEach((e) => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const target = +el.dataset.count;
-      const dur = 1400;
-      const start = performance.now();
-      const tick = (now) => {
-        const p = Math.min((now - start) / dur, 1);
-        el.textContent = fmt(Math.round(target * (1 - Math.pow(1 - p, 3))));
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-      countIO.unobserve(el);
-    }),
-  { threshold: 0.5 }
-);
-$$("[data-count]").forEach((el) => countIO.observe(el));
 
 const form = $("#quoteForm");
 if (form) {

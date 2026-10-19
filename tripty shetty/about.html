@@ -7,7 +7,7 @@
   <meta name="description" content="Advocate Tripti R. Shetty, B.A., L.L.B. — Government Law College Mumbai, forensic science trained, ex-Thakker &amp; Thakker, 98% career success ratio in criminal law. Speaks English, Hindi, Tulu, Marathi." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="assets/logo.png" />
   <meta property="og:title" content="About Advocate Tripti R. Shetty — Criminal Law, Mumbai" />
@@ -17,20 +17,19 @@
 </head>
 <body>
 
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="index.html" class="brand">
-        <img src="assets/logo.png" alt="Tripti Shetty &amp; Associates logo" class="brand__logo" />
+  <header class="hdr">
+    <div class="container hdr__in">
+      <a href="index.html" class="hdr__brand">
+        <img src="assets/logo.png" alt="Tripti Shetty &amp; Associates" />
       </a>
 
       <nav class="nav" id="nav" aria-label="Primary">
-        <a href="index.html" class="nav__link">Home</a>
         <a href="about.html" class="nav__link is-active">About</a>
-        <a href="practice.html" class="nav__link">Practice Areas</a>
+        <a href="practice.html" class="nav__link">Practice</a>
         <a href="media.html" class="nav__link">Media</a>
         <a href="testimonials.html" class="nav__link">Reviews</a>
         <a href="contact.html" class="nav__link">Contact</a>
-        <a href="tel:+919820629737" class="btn btn--sm nav__cta">Call Now</a>
+        <a href="tel:+919820629737" class="btn btn--sm btn--solid nav__cta">Call now</a>
       </nav>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -41,22 +40,23 @@
 
   <main>
 
-    <section class="page-hero">
+    <section class="page-head">
       <div class="container">
-        <div class="breadcrumb reveal">Home / About</div>
-        <h1 class="reveal">About Advocate Tripti R. Shetty</h1>
-        <p class="reveal">A criminal law practice built on preparation, relationships and results — a “one stop solution” for the entire legal framework.</p>
+        <p class="breadcrumb"><a href="index.html">Home</a> / About</p>
+        <h1>About Advocate Tripti R. Shetty</h1>
+        <p>A criminal law practice built on preparation, relationships and results — a “one stop solution” for the entire legal framework.</p>
       </div>
     </section>
 
-    <!-- PROFILE -->
+    <!-- THE FIRM -->
     <section class="section section--dark">
-      <div class="container about">
-        <div class="about__media reveal">
+      <div class="container split split--narrow-wide">
+        <figure>
           <img src="assets/profile.jpg" alt="Advocate Tripti R. Shetty" loading="lazy" />
-        </div>
-        <div class="about__text reveal">
-          <span class="eyebrow">The firm</span>
+          <figcaption>Advocate Tripti R. Shetty · Dindoshi, Goregaon East</figcaption>
+        </figure>
+        <div>
+          <p class="label label--light">The firm</p>
           <h2>Tripti Shetty &amp; Associates</h2>
           <p>
             <strong>Tripti Shetty &amp; Associates</strong> is a criminal law firm that specialises
@@ -69,61 +69,84 @@
             different departments of the legal framework on behalf of the client, thus ensuring
             minimal inconvenience to our esteemed clients.
           </p>
-          <div class="badges">
-            <span class="badge">Criminal Law</span>
-            <span class="badge">Mumbai, India</span>
-            <span class="badge">98% Success Ratio</span>
-          </div>
+          <dl class="spec">
+            <div><dt>Established work</dt><dd>Criminal law, Mumbai</dd></div>
+            <div><dt>Success ratio</dt><dd>98% career</dd></div>
+            <div><dt>Clients</dt><dd>Corporates, solicitor firms, builders, bankers &amp; HNIs</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
     <!-- CREDENTIALS -->
     <section class="section">
-      <div class="container why">
-        <div class="why__text reveal">
-          <span class="eyebrow">Credentials</span>
-          <h2>Advocate Tripti R. Shetty, B.A., L.L.B.</h2>
-          <p style="color:var(--muted)">Completed her graduation from Mumbai University and her law from Government Law College, Mumbai.</p>
-          <ul class="ticks">
-            <li>Completed her course on <strong>Forensic Science</strong></li>
-            <li>Started her legal career working with solicitor firm <strong>Thakker &amp; Thakker</strong> for two years</li>
-            <li>Has an unmatched <strong>career success ratio of 98%</strong></li>
-            <li>Has represented several <strong>corporates, solicitor firms, builders, bankers and High Net Worth Individuals (HNI)</strong></li>
-            <li>Speaks <strong>English, Hindi, Tulu and Marathi</strong></li>
-            <li>Enjoys <strong>educating and mentoring</strong> young lawyers, thus improving the overall legal fraternity</li>
-          </ul>
-          <a href="contact.html" class="btn btn--primary">Consult the advocate</a>
+      <div class="container split split--wide-narrow">
+        <div>
+          <p class="label">Credentials</p>
+          <h2 class="h2">Advocate Tripti R. Shetty, B.A., L.L.B.</h2>
+          <p class="lede">Completed her graduation from Mumbai University and her law from Government Law College, Mumbai.</p>
+          <dl class="spec">
+            <div><dt>Forensics</dt><dd>Completed her course on Forensic Science</dd></div>
+            <div><dt>Prior practice</dt><dd>Started her legal career with solicitor firm Thakker &amp; Thakker, for two years</dd></div>
+            <div><dt>Success ratio</dt><dd>An unmatched career success ratio of 98%</dd></div>
+            <div><dt>Represented</dt><dd>Corporates, solicitor firms, builders, bankers and High Net Worth Individuals (HNI)</dd></div>
+            <div><dt>Languages</dt><dd>English · Hindi · Tulu · Marathi</dd></div>
+            <div><dt>Mentoring</dt><dd>Enjoys educating and mentoring young lawyers, improving the overall legal fraternity</dd></div>
+          </dl>
+          <div class="btns">
+            <a href="contact.html" class="btn btn--solid">Consult the advocate</a>
+          </div>
         </div>
-        <div class="why__media reveal">
+        <figure>
           <img src="assets/arnab.jpg" alt="Tripti Shetty with Arnab Goswami" loading="lazy" />
-        </div>
+          <figcaption>On national television, 2018</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- HOW WE WORK -->
     <section class="section section--tint">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="eyebrow">How we work</span>
+        <header class="sec__head">
+          <p class="label">How we work</p>
           <h2>What clients get</h2>
-        </div>
-        <div class="cards cards--3">
-          <article class="pcard reveal"><span class="pcard__num">01</span><h3>One point of contact</h3><p>Bail, trial, appeal, documentation — the whole matter runs through one office, so you are never shuffled between departments.</p></article>
-          <article class="pcard reveal"><span class="pcard__num">02</span><h3>Prepared, not improvising</h3><p>Forensic-science training and trial experience mean the evidence is read line by line before the hearing, not during it.</p></article>
-          <article class="pcard reveal"><span class="pcard__num">03</span><h3>Reachable when it counts</h3><p>Arrests and remands do not wait for office hours — urgent matters are handled on priority, including through the pandemic era via video conferencing.</p></article>
+        </header>
+
+        <div class="ledger">
+          <div class="ledger__row">
+            <span class="ledger__num">01</span>
+            <div>
+              <h3>One point of contact</h3>
+              <p>Bail, trial, appeal, documentation — the whole matter runs through one office, so you are never shuffled between departments.</p>
+            </div>
+          </div>
+          <div class="ledger__row">
+            <span class="ledger__num">02</span>
+            <div>
+              <h3>Prepared, not improvising</h3>
+              <p>Forensic-science training and trial experience mean the evidence is read line by line before the hearing, not during it.</p>
+            </div>
+          </div>
+          <div class="ledger__row">
+            <span class="ledger__num">03</span>
+            <div>
+              <h3>Reachable when it counts</h3>
+              <p>Arrests and remands do not wait for office hours — urgent matters are handled on priority, including through the pandemic era via video conferencing.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section section--dark">
-      <div class="container center reveal">
-        <span class="eyebrow">Get in touch</span>
-        <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.5rem);margin:.6rem 0 .8rem">Discuss your matter with the advocate</h2>
-        <div class="hero__actions" style="justify-content:center">
-          <a href="tel:+919820629737" class="btn btn--primary">Call +91 98206 29737</a>
-          <a href="contact.html" class="btn btn--ghost">Contact form</a>
+    <section class="callout">
+      <div class="container callout__in">
+        <div>
+          <p class="label label--light">Urgent matters</p>
+          <p class="callout__t">Discuss your matter with the advocate</p>
+        </div>
+        <div class="callout__actions">
+          <a class="callout__tel" href="tel:+919820629737">+91 98206 29737</a>
+          <a class="btn btn--ghost" href="contact.html">Contact form</a>
         </div>
       </div>
     </section>
@@ -133,7 +156,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div>
-        <img src="assets/logo.png" alt="Tripti Shetty &amp; Associates" class="footer__logo" />
+        <a href="index.html" class="footer__brand"><img src="assets/logo.png" alt="Tripti Shetty &amp; Associates" /></a>
         <p>Criminal law firm led by Advocate Tripti R. Shetty, B.A., L.L.B. — a one-stop solution for criminal matters in Mumbai.</p>
         <div class="footer__social">
           <a href="https://in.linkedin.com/in/shettytripti" target="_blank" rel="noopener">LinkedIn</a>

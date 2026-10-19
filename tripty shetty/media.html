@@ -7,7 +7,7 @@
   <meta name="description" content="Media coverage of matters handled by Advocate Tripti Shetty — Juhu double murder, POCSO acquittals, MHADA ₹45 crore bail, casting agent case. Reported by TOI, Hindustan Times, Mumbai Mirror, PTI." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="assets/logo.png" />
   <meta property="og:title" content="Media Coverage — Tripti Shetty &amp; Associates" />
@@ -17,20 +17,19 @@
 </head>
 <body>
 
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="index.html" class="brand">
-        <img src="assets/logo.png" alt="Tripti Shetty &amp; Associates logo" class="brand__logo" />
+  <header class="hdr">
+    <div class="container hdr__in">
+      <a href="index.html" class="hdr__brand">
+        <img src="assets/logo.png" alt="Tripti Shetty &amp; Associates" />
       </a>
 
       <nav class="nav" id="nav" aria-label="Primary">
-        <a href="index.html" class="nav__link">Home</a>
         <a href="about.html" class="nav__link">About</a>
-        <a href="practice.html" class="nav__link">Practice Areas</a>
+        <a href="practice.html" class="nav__link">Practice</a>
         <a href="media.html" class="nav__link is-active">Media</a>
         <a href="testimonials.html" class="nav__link">Reviews</a>
         <a href="contact.html" class="nav__link">Contact</a>
-        <a href="tel:+919820629737" class="btn btn--sm nav__cta">Call Now</a>
+        <a href="tel:+919820629737" class="btn btn--sm btn--solid nav__cta">Call now</a>
       </nav>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -41,104 +40,127 @@
 
   <main>
 
-    <section class="page-hero">
+    <section class="page-head">
       <div class="container">
-        <div class="breadcrumb reveal">Home / Media</div>
-        <h1 class="reveal">In the news</h1>
-        <p class="reveal">Matters handled by the firm, reported by Times of India, Hindustan Times, Mumbai Mirror, Yashobhumi and the Press Trust of India.</p>
+        <p class="breadcrumb"><a href="index.html">Home</a> / Media</p>
+        <h1>In the news</h1>
+        <p>Matters handled by the firm, reported by Times of India, Hindustan Times, Mumbai Mirror, Yashobhumi and the Press Trust of India.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="cards cards--3">
 
-          <article class="card reveal">
-            <div class="card__media"><img src="assets/news-juhu.jpg" alt="Juhu double murder news report" loading="lazy" /></div>
-            <div class="card__body">
-              <h3>2011 Juhu double murder — life term, two let off</h3>
-              <p>“Justice delayed is not always justice denied.” All major newspapers — TOI, Hindustan Times, Mumbai Mirror, Yashobhumi and PTI — reported this crucial news.</p>
-              <a class="link" href="https://timesofindia.indiatimes.com/city/mumbai/2011-juhu-double-murder-one-gets-life-term-two-let-off/articleshow/70099876.cms" target="_blank" rel="noopener">Read on Times of India →</a>
-            </div>
-          </article>
+        <article class="mrow mrow--feature">
+          <figure>
+            <img src="assets/news-juhu.jpg" alt="Juhu double murder news report" loading="lazy" />
+          </figure>
+          <div>
+            <p class="ledger__src">Times of India · Hindustan Times · Mumbai Mirror · PTI</p>
+            <h3>2011 Juhu double murder — life term, two let off</h3>
+            <p>“Justice delayed is not always justice denied.” All major newspapers — TOI, Hindustan Times, Mumbai Mirror, Yashobhumi and PTI — reported this crucial news.</p>
+            <a class="link" href="https://timesofindia.indiatimes.com/city/mumbai/2011-juhu-double-murder-one-gets-life-term-two-let-off/articleshow/70099876.cms" target="_blank" rel="noopener">Read on Times of India →</a>
+          </div>
+        </article>
 
-          <article class="card reveal">
-            <div class="card__media"><img src="assets/news-techie.png" alt="No anticipatory bail to US techie news report" loading="lazy" /></div>
-            <div class="card__body">
-              <h3>No anticipatory bail to US techie in city ‘rape’ case</h3>
-              <p>Bombay High Court order in the matter — widely covered, September 2020.</p>
-              <a class="link" href="https://timesofindia.indiatimes.com/city/mumbai/no-anticipatory-bail-to-us-techie-in-city-rape-case/articleshow/77830594.cms" target="_blank" rel="noopener">Read on Times of India →</a>
-            </div>
-          </article>
+        <article class="mrow">
+          <figure>
+            <img src="assets/news-techie.png" alt="No anticipatory bail to US techie news report" loading="lazy" />
+          </figure>
+          <div>
+            <p class="ledger__src">Times of India · September 2020</p>
+            <h3>No anticipatory bail to US techie in city ‘rape’ case</h3>
+            <p>Bombay High Court order in the matter — widely covered.</p>
+            <a class="link" href="https://timesofindia.indiatimes.com/city/mumbai/no-anticipatory-bail-to-us-techie-in-city-rape-case/articleshow/77830594.cms" target="_blank" rel="noopener">Read on Times of India →</a>
+          </div>
+        </article>
 
-          <article class="card reveal">
-            <div class="card__media"><img src="assets/news-mhada.jpg" alt="MHADA officials bail news report" loading="lazy" /></div>
-            <div class="card__body">
-              <h3>Permanent bail granted for all 4 MHADA officials</h3>
-              <p>Matter pertaining to financial fraud of ₹45 crores — permanent bail granted by the Thane court for all four accused.</p>
-              <a class="link" href="assets/news-mhada.jpg" target="_blank" rel="noopener">View the coverage →</a>
-            </div>
-          </article>
+        <article class="mrow">
+          <figure>
+            <img src="assets/news-mhada.jpg" alt="MHADA officials bail news report" loading="lazy" />
+          </figure>
+          <div>
+            <p class="ledger__src">Thane court</p>
+            <h3>Permanent bail granted for all 4 MHADA officials</h3>
+            <p>Matter pertaining to financial fraud of ₹45 crores — permanent bail granted by the Thane court for all four accused.</p>
+            <a class="link" href="assets/news-mhada.jpg" target="_blank" rel="noopener">View the coverage →</a>
+          </div>
+        </article>
 
-          <article class="card reveal">
-            <div class="card__media"><img src="assets/news-pocso.jpg" alt="Father and son freed in POCSO case" loading="lazy" /></div>
-            <div class="card__body">
-              <h3>Father and son freed in POCSO case</h3>
-              <p>Charges found linked to a property row — both freed in the matter.</p>
-              <a class="link" href="https://timesofindia.indiatimes.com/city/mumbai/father-and-son-freed-in-pocso-case-charges-found-linked-to-property-row/articleshow/66171952.cms" target="_blank" rel="noopener">Read on Times of India →</a>
-            </div>
-          </article>
+        <article class="mrow">
+          <figure>
+            <img src="assets/news-pocso.jpg" alt="Father and son freed in POCSO case" loading="lazy" />
+          </figure>
+          <div>
+            <p class="ledger__src">Times of India</p>
+            <h3>Father and son freed in POCSO case</h3>
+            <p>Charges found linked to a property row — both freed in the matter.</p>
+            <a class="link" href="https://timesofindia.indiatimes.com/city/mumbai/father-and-son-freed-in-pocso-case-charges-found-linked-to-property-row/articleshow/66171952.cms" target="_blank" rel="noopener">Read on Times of India →</a>
+          </div>
+        </article>
 
-          <article class="card reveal">
-            <div class="card__media"><img src="assets/news-casting.jpg" alt="Casting agent held news report" loading="lazy" /></div>
-            <div class="card__body">
-              <h3>Casting agent held for raping minor after spiking drink</h3>
-              <p>The Malvani police arrested a casting agent for allegedly raping a 17-year-old aspiring model — booked under IPC rape and POCSO, produced before the special POCSO court in Dindoshi – Goregaon. Times of India, 12 June 2019.</p>
-              <a class="link" href="https://timesofindia.indiatimes.com/city/mumbai/mumbai-casting-agent-held-for-raping-minor-after-spiking-drink/articleshow/69748920.cms" target="_blank" rel="noopener">Read on Times of India →</a>
-            </div>
-          </article>
+        <article class="mrow">
+          <figure>
+            <img src="assets/news-casting.jpg" alt="Casting agent held news report" loading="lazy" />
+          </figure>
+          <div>
+            <p class="ledger__src">Times of India · 12 June 2019</p>
+            <h3>Casting agent held for raping minor after spiking drink</h3>
+            <p>The Malvani police arrested a casting agent for allegedly raping a 17-year-old aspiring model — booked under IPC rape and POCSO, produced before the special POCSO court in Dindoshi – Goregaon.</p>
+            <a class="link" href="https://timesofindia.indiatimes.com/city/mumbai/mumbai-casting-agent-held-for-raping-minor-after-spiking-drink/articleshow/69748920.cms" target="_blank" rel="noopener">Read on Times of India →</a>
+          </div>
+        </article>
 
-          <article class="card reveal">
-            <div class="card__media"><img src="assets/arnab.jpg" alt="Tripti Shetty with Arnab Goswami" loading="lazy" /></div>
-            <div class="card__body">
-              <h3>On national television</h3>
-              <p>Media appearances and commentary on criminal law matters — photographed with Arnab Goswami, 2018.</p>
-            </div>
-          </article>
+        <article class="mrow">
+          <figure>
+            <img src="assets/arnab.jpg" alt="Tripti Shetty with Arnab Goswami" loading="lazy" />
+          </figure>
+          <div>
+            <p class="ledger__src">National television · 2018</p>
+            <h3>On national television</h3>
+            <p>Media appearances and commentary on criminal law matters — photographed with Arnab Goswami.</p>
+          </div>
+        </article>
 
-        </div>
       </div>
     </section>
 
     <!-- ACTS REFERENCE -->
     <section class="section section--tint">
       <div class="container">
-        <div class="section__head reveal">
-          <span class="eyebrow">In focus</span>
+        <header class="sec__head">
+          <p class="label">In focus</p>
           <h2>Acts the firm defends under</h2>
-        </div>
-        <div class="cards cards--2">
-          <article class="pcard reveal">
-            <span class="pcard__num">NDPS ACT, 1985</span>
-            <h3>Narcotic Drugs and Psychotropic Substances Act</h3>
-            <p>The NDPS Act prohibits any person from producing, manufacturing, cultivating, possessing, selling, purchasing, transporting, storing and/or consuming any narcotic drug or psychotropic substance — one of the strictest statutes in Indian criminal law, with bail thresholds unlike any other.</p>
-          </article>
-          <article class="pcard reveal">
-            <span class="pcard__num">SC/ST ACT, 1989</span>
-            <h3>Scheduled Castes and Tribes (Prevention of Atrocities) Act</h3>
-            <p>Enacted by Parliament to prevent atrocities against Scheduled Castes and Scheduled Tribes — popularly known as the SC/ST Act, the POA Act, the Prevention of Atrocities Act, or simply the Atrocities Act.</p>
-          </article>
+        </header>
+
+        <div class="ledger">
+          <div class="ledger__row">
+            <span class="ledger__num">1985</span>
+            <div>
+              <h3>NDPS Act — Narcotic Drugs and Psychotropic Substances Act</h3>
+              <p>The NDPS Act prohibits any person from producing, manufacturing, cultivating, possessing, selling, purchasing, transporting, storing and/or consuming any narcotic drug or psychotropic substance — one of the strictest statutes in Indian criminal law, with bail thresholds unlike any other.</p>
+            </div>
+          </div>
+          <div class="ledger__row">
+            <span class="ledger__num">1989</span>
+            <div>
+              <h3>SC/ST Act — Scheduled Castes and Tribes (Prevention of Atrocities) Act</h3>
+              <p>Enacted by Parliament to prevent atrocities against Scheduled Castes and Scheduled Tribes — popularly known as the SC/ST Act, the POA Act, the Prevention of Atrocities Act, or simply the Atrocities Act.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--dark">
-      <div class="container center reveal">
-        <span class="eyebrow">Your matter, next</span>
-        <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.5rem);margin:.6rem 0 .8rem">Results start with a call</h2>
-        <div class="hero__actions" style="justify-content:center">
-          <a href="tel:+919820629737" class="btn btn--primary">Call +91 98206 29737</a>
-          <a href="contact.html" class="btn btn--ghost">Contact form</a>
+    <section class="callout">
+      <div class="container callout__in">
+        <div>
+          <p class="label label--light">Your matter, next</p>
+          <p class="callout__t">Results start with a call</p>
+        </div>
+        <div class="callout__actions">
+          <a class="callout__tel" href="tel:+919820629737">+91 98206 29737</a>
+          <a class="btn btn--ghost" href="contact.html">Contact form</a>
         </div>
       </div>
     </section>
@@ -148,7 +170,7 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div>
-        <img src="assets/logo.png" alt="Tripti Shetty &amp; Associates" class="footer__logo" />
+        <a href="index.html" class="footer__brand"><img src="assets/logo.png" alt="Tripti Shetty &amp; Associates" /></a>
         <p>Criminal law firm led by Advocate Tripti R. Shetty, B.A., L.L.B. — a one-stop solution for criminal matters in Mumbai.</p>
         <div class="footer__social">
           <a href="https://in.linkedin.com/in/shettytripti" target="_blank" rel="noopener">LinkedIn</a>
