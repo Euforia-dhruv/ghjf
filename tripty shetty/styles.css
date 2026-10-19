@@ -23,6 +23,11 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 ::selection { background: var(--ink); color: var(--paper); }
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 60;
+  pointer-events: none; opacity: .038;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .page-head :focus-visible, .section--dark :focus-visible, .callout :focus-visible,
 .docket :focus-visible, .footer :focus-visible { outline-color: var(--brass-lt); }
