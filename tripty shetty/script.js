@@ -19,21 +19,38 @@ if (toggle) {
 
 const form = $("#quoteForm");
 if (form) {
+  const summary = $("#formErrors");
+  const msgs = {
+    name: "Enter your full name",
+    phone: "Enter your phone number",
+    email: "Enter a valid email address",
+    message: "Describe your matter",
+  };
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    let ok = true;
+    const bad = [];
     $$("input, textarea", form).forEach((f) => {
-      if (f.required && !f.value.trim()) {
-        f.classList.add("is-invalid");
-        ok = false;
-      } else if (f.type === "email" && f.value && !/^\S+@\S+\.\S+$/.test(f.value)) {
-        f.classList.add("is-invalid");
-        ok = false;
+      let msg = "";
+      if (f.required && !f.value.trim()) msg = msgs[f.name] || "This field is required";
+      else if (f.type === "email" && f.value && !/^\S+@\S+\.\S+$/.test(f.value)) msg = msgs.email;
+      f.classList.toggle("is-invalid", !!msg);
+      if (msg) {
+        f.setAttribute("aria-invalid", "true");
+        bad.push({ f, msg });
       } else {
-        f.classList.remove("is-invalid");
+        f.removeAttribute("aria-invalid");
       }
     });
-    if (!ok) return;
+    if (bad.length) {
+      summary.innerHTML =
+        "<strong>There is a problem</strong><ul>" +
+        bad.map((b) => `<li><a href="#${b.f.id}">${b.msg}</a></li>`).join("") +
+        "</ul>";
+      summary.hidden = false;
+      summary.focus();
+      return;
+    }
+    summary.hidden = true;
     const d = new FormData(form);
     const msg =
       `New enquiry from triptishetty.com%0A` +
