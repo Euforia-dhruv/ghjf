@@ -65,6 +65,75 @@ if (form) {
   });
 }
 
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const hdr = $(".hdr");
+if (hdr) {
+  addEventListener(
+    "scroll",
+    () => hdr.classList.toggle("is-scrolled", scrollY > 8),
+    { passive: true }
+  );
+}
+
+const RSEL =
+  ".sec__head, .index li, .spec > div, .mrow, .quotes li, .ledger__row, " +
+  ".feature, .docket__item, .contact__list > div, .press, .pull";
+if (!reduceMotion) {
+  const groups = new Map();
+  $$(RSEL).forEach((el) => {
+    const key = el.parentElement;
+    const i = groups.get(key) || 0;
+    groups.set(key, i + 1);
+    el.style.setProperty("--d", `${i * 65}ms`);
+    el.classList.add("r");
+  });
+  const pending = new Set($$(".r"));
+  const show = (el) => el.classList.add("in");
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((en) => en.isIntersecting && show(en.target)),
+    { threshold: 0.08, rootMargin: "0px 0px -5% 0px" }
+  );
+  pending.forEach((el) => io.observe(el));
+  // backstop: instant jumps skip IO frames — sweep anything at/above the fold
+  const sweep = () =>
+    pending.forEach((el) => {
+      if (el.getBoundingClientRect().top < innerHeight) show(el);
+    });
+  addEventListener("scroll", sweep, { passive: true });
+  sweep();
+}
+
+const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+const nums = $$("[data-count]");
+if (nums.length) {
+  const run = (el) => {
+    const end = +el.dataset.count;
+    if (reduceMotion) {
+      el.textContent = end;
+      return;
+    }
+    const t0 = performance.now();
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / 950);
+      el.textContent = Math.round(end * easeOut(p));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          run(en.target);
+          io.unobserve(en.target);
+        }
+      }),
+    { threshold: 0.4 }
+  );
+  nums.forEach((n) => io.observe(n));
+}
+
 document.addEventListener(
   "error",
   (e) => {
