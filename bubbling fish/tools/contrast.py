@@ -24,10 +24,10 @@ def ratio(fg, bg="#ffffff"):
     return round((hi + 0.05) / (lo + 0.05), 2)
 
 
-# Teal-blue palette (#086288/#4D8DBA/#97D7FF/#FFEFC4) — every pair used (AA >= 4.5, UI >= 3)
+# Teal-blue palette (#086288/#04344B/#97D7FF/#FFEFC4) — every pair used (AA >= 4.5, UI >= 3)
 BG = "#086288"          # body / cream
 MIST = "#064f6e"        # .section.mist
-WHITE = "#076489"       # .section.white
+WHITE = "#04344b"       # .section.white (deep band)
 CARD = "#053850"        # --bg-card rgba(2,30,45,.75) over #086288 (computed)
 FOOT = "#04303f"        # footer
 GRAD_A = "#086288"      # --grad start

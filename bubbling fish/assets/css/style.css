@@ -1,7 +1,7 @@
 @font-face { font-family: "Anton"; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/anton.woff2) format("woff2"); }
 @font-face { font-family: "Nunito"; font-style: normal; font-weight: 400 1000; font-display: swap; src: url(../fonts/nunito.woff2) format("woff2"); }
 
-/* Bubbling Fish — teal-blue palette (#086288 / #4D8DBA / #97D7FF / #FFEFC4); AA pairs verified via tools/contrast.py */
+/* Bubbling Fish — teal-blue palette (#086288 / #04344B band / #97D7FF / #FFEFC4); AA pairs verified via tools/contrast.py */
 :root {
   --bg-deep: #086288;
   --bg-card: rgba(2, 30, 45, .75);
@@ -15,7 +15,7 @@
   --teal-deep: #97d7ff;
   --cream: #086288;
   --mist: #064f6e;
-  --white: #076489;
+  --white: #04344b;
   --ink: #ffefc4;
   --ink-soft: #f3e9cb;
   --orange-dark: #bfe6ff;
@@ -87,8 +87,6 @@ ul { padding-left: 1.2em; }
   letter-spacing: .18em; text-transform: uppercase;
   color: var(--orange-dark); margin-bottom: 1.1rem;
 }
-.eyebrow::before { content: "> "; }
-.eyebrow.on-dark { color: var(--orange-dark); background: none; }
 .lead { font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--ink-soft); max-width: 62ch; }
 .center { text-align: center; }
 .center .lead { margin-inline: auto; }
@@ -174,7 +172,9 @@ ul { padding-left: 1.2em; }
 /* ---------- hero (immersive video, StringTune pattern) ---------- */
 .hero {
   position: relative; overflow: hidden; color: #fff;
-  min-height: 100vh; display: grid; place-items: center; text-align: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid; place-items: center; text-align: center;
   margin-top: calc(var(--nav-h) * -1);
   padding: calc(var(--nav-h) + 2rem) 1rem 5rem;
   background: var(--mist);
@@ -306,8 +306,8 @@ ul { padding-left: 1.2em; }
 .program-card h3 { display: flex; align-items: center; gap: .45em; }
 .program-card ul { list-style: none; padding: 0; margin: 0 0 1.1rem; color: var(--ink-soft); font-size: .93rem; }
 .program-card ul li { padding-left: 1.4em; position: relative; margin-bottom: .3em; }
-.program-card ul li::before { content: "◍"; position: absolute; left: 0; color: var(--teal-deep); }
-.program-card .btn { margin-top: auto; }
+.program-card ul li::before { content: "•"; position: absolute; left: 0; color: var(--teal-deep); }
+.program-card .btn { margin-top: auto; padding: .7em 1em; font-size: .85rem; white-space: nowrap; }
 
 /* stats */
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
