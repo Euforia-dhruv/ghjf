@@ -87,8 +87,6 @@ h2 { font-size:clamp(48px, 7vw, 102px); line-height:.9; margin-bottom:42px; }
 .product-image img { transition:transform .7s cubic-bezier(.2,.65,.25,1); }
 .product-card:hover .product-image img { transform:scale(1.04); }
 .image-rust { background:var(--rust); }.image-olive { background:#69735b; }.image-cream { background:#c2ad92; }.image-charcoal { background:#3a3934; }.image-factory { background:#6b5043; }
-.fabric-swatch { position:absolute; inset:16% 18%; opacity:.6; background:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 2px, transparent 2px 8px),repeating-linear-gradient(45deg,rgba(0,0,0,.18) 0 1px, transparent 1px 7px); transform:rotate(-9deg); box-shadow:20px 32px 0 rgba(0,0,0,.08); }
-.swatch-rib { background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 3px, transparent 3px 13px); }
 .product-meta { display:grid; grid-template-columns:35px 1fr; padding-top:15px; border-top:1px solid var(--line); margin-top:15px; }
 .product-meta span { color:var(--rust); font:10px var(--mono); }
 .product-meta h3 { font:500 clamp(22px, 2.3vw, 32px)/1 var(--serif); margin:0 0 5px; letter-spacing:-.04em; }
