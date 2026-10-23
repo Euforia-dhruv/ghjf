@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Petexxindia.com — Problem Audit</title>
+<style>
+  @page { size: A4; margin: 18mm 15mm 18mm 15mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; margin: 0;
+  }
+  h1 { font-size: 22pt; margin: 0 0 4px 0; color: #0f172a; letter-spacing: -0.5px; }
+  .sub { color: #64748b; font-size: 9.5pt; margin-bottom: 18px; }
+  h2 {
+    font-size: 13pt; color: #fff; background: #0f172a; padding: 6px 10px;
+    margin: 22px 0 10px 0; border-radius: 4px; page-break-after: avoid;
+  }
+  h3 { font-size: 11pt; margin: 0 0 4px 0; color: #0f172a; page-break-after: avoid; }
+  .issue {
+    border: 1px solid #e2e8f0; border-left: 5px solid #94a3b8;
+    border-radius: 6px; padding: 10px 12px; margin-bottom: 10px;
+    page-break-inside: avoid;
+  }
+  .critical { border-left-color: #dc2626; }
+  .high { border-left-color: #ea580c; }
+  .medium { border-left-color: #d97706; }
+  .low { border-left-color: #2563eb; }
+  .badge {
+    display: inline-block; font-size: 7.5pt; font-weight: 700; color: #fff;
+    padding: 1.5px 7px; border-radius: 10px; vertical-align: middle;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .b-critical { background: #dc2626; }
+  .b-high { background: #ea580c; }
+  .b-medium { background: #d97706; }
+  .b-low { background: #2563eb; }
+  .head-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .id { font-family: Consolas, monospace; font-size: 8.5pt; color: #64748b; }
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 8px 0 14px 0; }
+  th { background: #0f172a; color: #fff; text-align: left; padding: 6px 8px; font-weight: 600; }
+  td { border: 1px solid #e2e8f0; padding: 5px 8px; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8fafc; }
+  .lbl { font-weight: 700; color: #334155; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.4px; display: block; margin-top: 6px; }
+  .evidence {
+    font-family: Consolas, "Courier New", monospace; font-size: 8.5pt;
+    background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 4px;
+    padding: 6px 8px; margin: 4px 0; white-space: pre-wrap; word-break: break-all;
+  }
+  .fix { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 4px; padding: 5px 8px; margin-top: 6px; font-size: 9.5pt; }
+  .fix b { color: #166534; }
+  .why { color: #475569; font-size: 9.5pt; }
+  .cover-badge { display:inline-block; background:#dc2626; color:#fff; font-size:10pt; font-weight:700; padding:4px 14px; border-radius:4px; margin-top:6px; }
+  .kpis { display: flex; gap: 10px; margin: 14px 0; }
+  .kpi { flex: 1; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 10px; text-align: center; }
+  .kpi .n { font-size: 20pt; font-weight: 800; color: #0f172a; display: block; line-height: 1.1; }
+  .kpi .t { font-size: 8pt; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+  .pagebreak { page-break-before: always; }
+  .note { font-size: 8.5pt; color: #94a3b8; margin-top: 2px; }
+  ul { margin: 4px 0 4px 18px; padding: 0; }
+  li { margin-bottom: 2px; }
+  .footer-note { margin-top: 24px; border-top: 2px solid #0f172a; padding-top: 8px; font-size: 8.5pt; color: #64748b; }
+</style>
+</head>
+<body>
+
+<h1>Website Problem Audit</h1>
+<div class="sub">
+  <b>Target:</b> https://www.petexxindia.com/ (Petexx India / Petexx Hosiery India Pvt Ltd, Tiruppur)<br>
+  <b>Audit date:</b> 22 October 2026 &nbsp;·&nbsp; <b>Scope:</b> Full public site (5 pages), HTTP headers, TLS, sitemaps, robots.txt, outbound links, cross-referenced directory data<br>
+  <b>Method:</b> Live server-side fetches, header/TLS inspection, DOM/regex analysis, link-status probes
+</div>
+<span class="cover-badge">OVERALL GRADE: D+ — COMPROMISED &amp; STALE</span>
+
+<div class="kpis">
+  <div class="kpi"><span class="n" style="color:#dc2626">4</span><span class="t">Critical</span></div>
+  <div class="kpi"><span class="n" style="color:#ea580c">7</span><span class="t">High</span></div>
+  <div class="kpi"><span class="n" style="color:#d97706">9</span><span class="t">Medium</span></div>
+  <div class="kpi"><span class="n" style="color:#2563eb">7</span><span class="t">Low</span></div>
+  <div class="kpi"><span class="n">27</span><span class="t">Total issues</span></div>
+</div>
+
+<h2>1. CRITICAL — Fix Immediately</h2>
+
+<div class="issue critical">
+  <div class="head-row"><h3>Hidden spam link injection (site compromised)</h3><span><span class="badge b-critical">Critical</span> <span class="id">CRIT-01</span></span></div>
+  <span class="lbl">Location</span> <code>https://www.petexxindia.com/about-us/</code> — inside the company description paragraph.
+  <span class="lbl">Evidence</span>
+  <div class="evidence">&lt;a style="text-decoration: none; color: #333;" href="https://bestessayes.com/buy-research-papers/"&gt;sell term papers&lt;/a&gt;</div>
+  <span class="lbl">Problem</span>
+  <span class="why">An invisible link (unstyled anchor text, matching text color, no underline) points to an essay-mill spam domain. Classic black-hat SEO injection delivered via an abandoned nulled theme or vulnerable plugin. Google treats manipulative outbound links as a webspam signal and can apply manual action or deindex the domain.</span>
+  <div class="fix"><b>Fix:</b> Remove the link, scan all <code>wp-content</code> files for further injections, rotate all admin credentials, replace the theme, install a firewall/monitoring plugin (Wordfence/Sucuri) and request Google reconsideration if a manual action exists in Search Console.</div>
+</div>
+
+<div class="issue critical">
+  <div class="head-row"><h3>HTTP version serves full content — no redirect to HTTPS</h3><span><span class="badge b-critical">Critical</span> <span class="id">CRIT-02</span></span></div>
+  <span class="lbl">Location</span> Site-wide, server configuration.
+  <span class="lbl">Evidence</span>
+  <div class="evidence">GET http://www.petexxindia.com/  →  HTTP/1.1 200 OK   (no 301 to https://)</div>
+  <span class="lbl">Problem</span>
+  <span class="why">The insecure HTTP URL returns the complete page instead of a 301 redirect. Users can browse unencrypted; search engines may index both protocol variants (duplicate content, split ranking signals); forms and emails are exposed to interception.</span>
+  <div class="fix"><b>Fix:</b> Add a permanent 301 redirect HTTP→HTTPS at the Apache/vhost level, then force HTTPS for all hosts (www and non-www canonicalised to one).</div>
+</div>
+
+<div class="issue critical">
+  <div class="head-row"><h3>60+ mixed-content resources loaded over plain HTTP</h3><span><span class="badge b-critical">Critical</span> <span class="id">CRIT-03</span></span></div>
+  <span class="lbl">Location</span> Every template.
+  <span class="lbl">Evidence</span>
+  <div class="evidence">Homepage:   47 × src="http://..."   3 × href="http://..."
+Products:    7 × src="http://..."
+Portfolio:   8 × src="http://..."
+3rd-party:  http://kloe.select-themes.com/wp-content/uploads/2015/12/pattern.png</div>
+  <span class="lbl">Problem</span>
+  <span class="why">On an HTTPS page browsers block or warn on insecure subresources — broken images, insecure-connection warnings in the address bar, loss of buyer trust (the audience here is overseas importers). Assets still point at the theme vendor's demo domain over HTTP: if that domain dies or changes hands, parts of the site break.</span>
+  <div class="fix"><b>Fix:</b> Run a search-replace of <code>http://www.petexxindia.com → https://</code> across post content, and download all <code>kloe.select-themes.com</code> assets locally into the child theme. Enable "HTTPS mixed-content" scanning after.</div>
+</div>
+
+<div class="issue critical">
+  <div class="head-row"><h3>All security headers missing</h3><span><span class="badge b-critical">Critical</span> <span class="id">CRIT-04</span></span></div>
+  <span class="lbl">Evidence</span>
+  <div class="evidence">Strict-Transport-Security : (missing)
+Content-Security-Policy   : (missing)
+X-Frame-Options           : (missing)
+X-Content-Type-Options    : (missing)
+Referrer-Policy           : (missing)</div>
+  <span class="lbl">Problem</span>
+  <span class="why">No HSTS → HTTPS can be silently downgraded on first visit. No CSP → the already-present injected script/link can execute unchallenged. No X-Frame-Options → clickjacking risk. No X-Content-Type-Options → MIME-sniffing risk.</span>
+  <div class="fix"><b>Fix:</b> Add the five headers in <code>.htaccess</code> (HSTS with 1-year max-age + includeSubDomains once HTTPS redirect is in place; CSP starting in Report-Only mode).</div>
+</div>
+
+<h2>2. HIGH — SEO &amp; Indexation Damage</h2>
+
+<div class="issue high">
+  <div class="head-row"><h3>No meta descriptions on any page</h3><span><span class="badge b-high">High</span> <span class="id">HIGH-01</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Homepage : &lt;meta name="description"&gt; → (absent)
+Portfolio: &lt;meta name="description"&gt; → (absent)</div>
+  <span class="why">Google auto-generates snippets from unrelated page text → poor click-through rate for commercial queries like "apparel sourcing India".</span>
+  <div class="fix"><b>Fix:</b> Write unique 140–160 char descriptions for all 5 main pages and key portfolio items.</div>
+</div>
+
+<div class="issue high">
+  <div class="head-row"><h3>Keyword-less title tag site-wide</h3><span><span class="badge b-high">High</span> <span class="id">HIGH-02</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">&lt;title&gt;Petexxindia&lt;/title&gt;                        (homepage)
+&lt;title&gt;Men&#8217;s T-Shirts 1 &#8211; Petexxindia&lt;/title&gt;   (portfolio)</div>
+  <span class="why">No brand descriptor, no keywords, no location. Invisible in search results for the terms that matter (sourcing, garments, exporter, Tiruppur).</span>
+  <div class="fix"><b>Fix:</b> Pattern: <code>Page — Petexx India | Apparel Sourcing &amp; Garment Export from Tiruppur</code>.</div>
+</div>
+
+<div class="issue high">
+  <div class="head-row"><h3>No H1 heading on any tested page</h3><span><span class="badge b-high">High</span> <span class="id">HIGH-03</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Homepage H1 count: 0
+Contact  H1 count: 0   (all headings are H2/H3)</div>
+  <span class="why">Broken semantic hierarchy; search engines get no primary topic signal.</span>
+  <div class="fix"><b>Fix:</b> Exactly one keyword-bearing H1 per page.</div>
+</div>
+
+<div class="issue high">
+  <div class="head-row"><h3>Zero social-preview and structured-data tags</h3><span><span class="badge b-high">High</span> <span class="id">HIGH-04</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Open Graph (og:*) tags : 0
+Twitter Card tags       : 0
+JSON-LD schema          : 0</div>
+  <span class="why">Sharing petexxindia.com on LinkedIn/Facebook/WhatsApp produces no image, title or description — fatal for a B2B company pitching buyers socially. No Organization/LocalBusiness schema → no rich results, no knowledge-panel feeding.</span>
+  <div class="fix"><b>Fix:</b> Add OG + Twitter tags and a JSON-LD <code>Organization</code> block (name, address Tiruppur 641604, emails, phone, sameAs social links).</div>
+</div>
+
+<div class="issue high">
+  <div class="head-row"><h3>Author/user sitemap publicly exposed</h3><span><span class="badge b-high">High</span> <span class="id">HIGH-05</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">GET /wp-sitemap-users-1.xml → 200 OK
+&lt;loc&gt;https://www.petexxindia.com/author/petexx/&lt;/loc&gt;</div>
+  <span class="why">Leaks the WordPress username <code>petexx</code> — feeds credential-stuffing / brute-force attacks.</span>
+  <div class="fix"><b>Fix:</b> Disable author archives/sitemaps (or <code>Disallow: /author/</code> + remove from sitemap index) and rename the admin user.</div>
+</div>
+
+<div class="issue high">
+  <div class="head-row"><h3>WordPress version disclosed to the public</h3><span><span class="badge b-high">High</span> <span class="id">HIGH-06</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">&lt;meta name="generator" content="WordPress 7.0.7"&gt;</div>
+  <span class="why">Exact core version fingerprint for exploit targeting; combined with neglected plugins/theme this is how infections (like CRIT-01) get in.</span>
+  <div class="fix"><b>Fix:</b> Strip the generator meta; keep core auto-updated; audit plugin list (contact-form-7, js_composer, soundy-background-music, kloe theme).</div>
+</div>
+
+<div class="issue high">
+  <div class="head-row"><h3>robots.txt under-configured</h3><span><span class="badge b-high">High</span> <span class="id">HIGH-07</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Sitemap: https://www.petexxindia.com/wp-sitemap.xml</div>
+  <span class="why">Author archives, feed endpoints and debug paths are all crawlable; nothing prevents indexing of the spam-injected page variants.</span>
+  <div class="fix"><b>Fix:</b> Add <code>Disallow: /author/</code>, <code>/feed/</code>, <code>?*</code> query traps as appropriate after fixing CRIT-01.</div>
+</div>
+
+<div class="pagebreak"></div>
+<h2>3. MEDIUM — Trust, Compliance &amp; Performance</h2>
+
+<div class="issue medium">
+  <div class="head-row"><h3>Site content frozen in 2016</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-01</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Footer on every page : "2016 Petexx India © All Rights Reserved"
+Portfolio assets      : 2016/…, 2015/… uploads
+Shortcode remnant     : [analytics-counter] (non-functional)</div>
+  <span class="why">A buyer landing in 2026 sees a decade-stale site — direct hit to credibility for a company claiming active EU/US brand work.</span>
+  <div class="fix"><b>Fix:</b> Full content refresh: current year, new photography, real case studies, updated team &amp; capacity claims.</div>
+</div>
+
+<div class="issue medium">
+  <div class="head-row"><h3>No web analytics installed</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-02</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">google-analytics / gtag / GTM / UA- / G-XXXX / fbq() references in source: 0
+Footer still renders dead [analytics-counter] shortcode</div>
+  <span class="why">Zero visibility into traffic, buyer sources or conversions; every marketing decision is guesswork.</span>
+  <div class="fix"><b>Fix:</b> Install GA4 (or privacy-friendly alternative) + Meta Pixel if ads are run; remove the dead shortcode.</div>
+</div>
+
+<div class="issue medium">
+  <div class="head-row"><h3>Personal emails exposed in plain text</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-03</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Contact page: amit@petexxindia.com, sumit@petexxindia.com, +91-9443166073
+(MCA-registered email amit@petexxindia.com also public via ZaubaCorp)</div>
+  <span class="why">Harvested by spam bots; directors' mailboxes get flooded; spear-phishing surface.</span>
+  <div class="fix"><b>Fix:</b> Obfuscate or route via the contact form; add DMARC/SPF/DKIM records for the domain.</div>
+</div>
+
+<div class="issue medium">
+  <div class="head-row"><h3>Google Maps widget broken (raw shortcode output)</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-04</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Contact page renders literal text:  [vc_gmaps size="300"]</div>
+  <span class="why">Visual Composer map widget no longer resolves — the office location renders as code. Overseas buyers cannot see where the company is.</span>
+  <div class="fix"><b>Fix:</b> Re-insert the Google Maps embed (iframe) manually or update/replace js_composer.</div>
+</div>
+
+<div class="issue medium">
+  <div class="head-row"><h3>Accessibility violations</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-05</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">viewport: user-scalable=no          → zoom disabled (WCAG 1.4.4 fail)
+Soundy Background Music plugin active (8 refs) → autoplay audio (WCAG 2.2.2 fail)
+ARIA/role attributes sitewide: 2</div>
+  <span class="why">Users with low vision cannot zoom; autoplaying music is hostile UX in a B2B context; legal exposure under accessibility norms in EU target markets.</span>
+  <div class="fix"><b>Fix:</b> Remove <code>user-scalable=no</code>, deactivate the music plugin, add alt text discipline + landmark roles.</div>
+</div>
+
+<div class="issue medium">
+  <div class="head-row"><h3>Asset bloat &amp; layout instability</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-06</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Homepage: 18 CSS files + 25 JS files (for a 5-page brochure site)
+48 images — only 1 with loading="lazy", only 5 with width/height attributes
+37 defer/async markers but 43 render-blocking assets total</div>
+  <span class="why">Slow mobile rendering, high Core Web Vitals failure risk (CLS, LCP) → weaker rankings and abandoned buyer sessions.</span>
+  <div class="fix"><b>Fix:</b> Dequeue unused CSS/JS, lazy-load all below-fold images, set intrinsic dimensions, add caching.</div>
+</div>
+
+<div class="issue medium">
+  <div class="head-row"><h3>4 of 5 partner-factory links are dead</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-07</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">http://www.cliftonexport.com/                       → 404
+http://exceldeals.com/                              → 403
+http://www.sudhamahosieries.com/sudhama_hosieries…  → DNS does not resolve
+http://tea-india.org/majesticexports                → timeout (dead)
+http://bestcorp.in/profile.html                     → 200 OK  (only survivor)</div>
+  <span class="why">The "Mfg Facilities" page is the core proof of the "20+ factories" claim — 80% of its outbound evidence links fail, making the whole network claim unverifiable.</span>
+  <div class="fix"><b>Fix:</b> Verify each partner, remove dead entries or update URLs; state audited compliance certificates per factory.</div>
+</div>
+
+<div class="issue medium">
+  <div class="head-row"><h3>Third-party theme-demo domain in production (nulled-theme symptom)</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-08</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">External domains loaded: http://kloe.select-themes.com (demo CDN), http://gmpg.org
+Plugins found: contact-form-7, js_composer, soundy-background-music, theme "kloe"</div>
+  <span class="why">Production assets served from a third-party demo server over HTTP — supply-chain risk (domain takeover = site defacement) and a hallmark of an unlicensed theme that never receives security updates.</span>
+  <div class="fix"><b>Fix:</b> Purchase/replace the theme, host all assets locally on the same domain.</div>
+</div>
+
+<div class="issue medium">
+  <div class="head-row"><h3>SSL certificate renewal window</h3><span><span class="badge b-medium">Medium</span> <span class="id">MED-09</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Issuer: Let's Encrypt (CN=YR2)
+Valid: 2026-09-23 → 2026-12-22   (60 days remaining at audit date)</div>
+  <span class="why">Certificate is valid today, but on this site's maintenance track record an unmonitored auto-renewal failure = full HTTPS outage.</span>
+  <div class="fix"><b>Fix:</b> Confirm certbot/cron auto-renewal is active and monitored; add an uptime check.</div>
+</div>
+
+<div class="pagebreak"></div>
+<h2>4. LOW — Content, Accuracy &amp; Consistency</h2>
+
+<div class="issue low">
+  <div class="head-row"><h3>~50 thin portfolio pages (index bloat)</h3><span><span class="badge b-low">Low</span> <span class="id">LOW-01</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">/products/ gallery: image-only items ("Men's T-Shirts 1..8", "Nightwear 1..8", "Yoga 1..8", "Sweaters 1..8", "Infant Wear 1..8", "Ladies tops 1..8" …)
+No product descriptions, MOQ, fabric specs, prices, or lead times.</div>
+  <span class="why">Search engines classify as thin/duplicate content; buyers get zero decision-making information.</span>
+  <div class="fix"><b>Fix:</b> Consolidate galleries into category pages with real copy, specs and enquiry CTAs.</div>
+</div>
+
+<div class="issue low">
+  <div class="head-row"><h3>Embarrassing copy errors on live pages</h3><span><span class="badge b-low">Low</span> <span class="id">LOW-02</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">"They are given the freedom to take take ownership…"      (doubled word, homepage)
+"our concern follows the AQL 2.5 level"                     (wrong word, homepage)
+"Importers; Wholesalers and Fashion retailers"              (semicolons used as commas, throughout)
++ injected spam anchor "sell term papers"                    (see CRIT-01)</div>
+  <span class="why">Signals neglect to exactly the audience (EU/US importers) whose business depends on detail-orientation.</span>
+  <div class="fix"><b>Fix:</b> Professional copy-edit of all 5 pages.</div>
+</div>
+
+<div class="issue low">
+  <div class="head-row"><h3>Unverified famous-brand logo wall (trademark risk)</h3><span><span class="badge b-low">Low</span> <span class="id">LOW-03</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Logos displayed as clients: Pepe Jeans, Mango, Ralph Lauren, C&amp;A, Fila,
+Mothercare, Hanes, Tom Tailor, Prana, Max, Seiyu + others —
+no "manufactured for" disclaimer, no permission shown, no case studies.</div>
+  <span class="why">Displaying third-party trademarks without authorisation risks legal notice and, if untrue, misrepresentation. Unverifiable claims also read as inflated.</span>
+  <div class="fix"><b>Fix:</b> Keep only clients whose permission is documented; add a neutral "selected brands produced by our partner factories" disclaimer with dates.</div>
+</div>
+
+<div class="issue low">
+  <div class="head-row"><h3>Founding year stated four different ways</h3><span><span class="badge b-low">Low</span> <span class="id">LOW-04</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Website About page &amp; Tracxn &amp; Kompass : 1991
+LinkedIn company page                  : 2003
+TradeIndia profile                     : 2004
+MCA incorporation (legal truth)        : 16 Sep 2009 — Petexx Hosiery India Pvt Ltd,
+                                        CIN U18101TZ2009PTC015492
+Apparel Resources press, Jun 2016      : "completing 1½ decades" (≈2001)</div>
+  <span class="why">The company's own story is internally inconsistent — easy for a checking buyer to catch, hard to explain.</span>
+  <div class="fix"><b>Fix:</b> Pick one defensible narrative (e.g. "founded 2001, incorporated as Petexx Hosiery India Pvt Ltd in 2009") and align every property.</div>
+</div>
+
+<div class="issue low">
+  <div class="head-row"><h3>Contact form has no visible spam protection</h3><span><span class="badge b-low">Low</span> <span class="id">LOW-05</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Plugin: Contact Form 7 — no honeypot, no reCAPTCHA markers detected in markup</div>
+  <span class="why">Form will be bot-spammed once anyone finds it; genuine enquiries buried.</span>
+  <div class="fix"><b>Fix:</b> Add Cloudflare Turnstile or reCAPTCHA to CF7, plus form-to-email logging.</div>
+</div>
+
+<div class="issue low">
+  <div class="head-row"><h3>Broken links &amp; dead interactive elements</h3><span><span class="badge b-low">Low</span> <span class="id">LOW-06</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Sweaters 2 links to wrong slug: /portfolio-item/sweatshirts-2-2/
+Homepage slider/nav contains empty href="#" anchors
+Footer "Online Order Tracking" → links to /services/ (no tracking system reachable,
+ despite Services page advertising a "Web Based ONLINE ORDER TRACKING SYSTEM")</div>
+  <span class="why">Advertised functionality doesn't exist; navigational dead-ends frustrate buyers.</span>
+  <div class="fix"><b>Fix:</b> Correct slugs, remove empty anchors, either build the order-tracking login or remove the promise.</div>
+</div>
+
+<div class="issue low">
+  <div class="head-row"><h3>Contradictory contact details across directories</h3><span><span class="badge b-low">Low</span> <span class="id">LOW-07</span></span></div>
+  <span class="lbl">Evidence</span><div class="evidence">Website          : +91-9443166073 (Amit / Sumit emails)
+ZoomInfo         : +91 421 430 4040
+TradeIndia       : MD "Mr. Sumit Prasad"; Purchase Mgr "Mr. Ragavan"
+IndiaMART        : "Sumit Kumar Prasad (General Manager Marketing)"
+LinkedIn         : "established 2003"; Kompass: "50-99 employees" vs Tracxn: 13</div>
+  <span class="why">No single source of truth; buyers get different numbers, titles and company ages depending where they look.</span>
+  <div class="fix"><b>Fix:</b> Standardise NAP (name, address, phone) + founding year across site, LinkedIn, IndiaMART, TradeIndia, Kompass, GlobalLinker.</div>
+</div>
+
+<h2>5. Priority Fix Order</h2>
+<table>
+  <tr><th>#</th><th>Action</th><th>Effort</th><th>Issues closed</th></tr>
+  <tr><td>1</td><td>Remove spam link, full malware/IOC scan, rotate credentials, replace theme</td><td>~1 hr</td><td>CRIT-01, HIGH-06, MED-08</td></tr>
+  <tr><td>2</td><td>Force HTTPS 301 + add 5 security headers</td><td>~30 min</td><td>CRIT-02, CRIT-04</td></tr>
+  <tr><td>3</td><td>Search-replace all mixed-content URLs; localise theme assets</td><td>~1 hr</td><td>CRIT-03</td></tr>
+  <tr><td>4</td><td>Rewrite titles + meta descriptions + one H1 per page</td><td>~2 hrs</td><td>HIGH-01…03</td></tr>
+  <tr><td>5</td><td>Add OG/Twitter tags + JSON-LD Organization schema</td><td>~2 hrs</td><td>HIGH-04</td></tr>
+  <tr><td>6</td><td>Block author sitemap, strip generator tag, harden robots.txt</td><td>~15 min</td><td>HIGH-05…07</td></tr>
+  <tr><td>7</td><td>Remove music plugin + user-scalable=no; fix map embed; install GA4</td><td>~1.5 hrs</td><td>MED-02, MED-04, MED-05</td></tr>
+  <tr><td>8</td><td>Fix/remove dead factory links; add compliance certificates per factory</td><td>~2 hrs</td><td>MED-07</td></tr>
+  <tr><td>9</td><td>Full content refresh + copy edit + consolidate portfolio</td><td>Days</td><td>MED-01, LOW-01…03, LOW-06</td></tr>
+  <tr><td>10</td><td>Reconcile founding year, phone, titles across all properties</td><td>~1 hr</td><td>LOW-04, LOW-07</td></tr>
+  <tr><td>11</td><td>CF7 captcha, email obfuscation, DMARC, cert-renewal monitoring</td><td>~1 hr</td><td>MED-03, MED-09, LOW-05</td></tr>
+</table>
+
+<div class="footer-note">
+<b>Not covered by this audit (out of scope):</b> server-side vulnerability scanning, authenticated admin-panel review, paid-tool Lighthouse/PageSpeed CI, Google Search Console / manual-action status, backend order-tracking system internals, factory compliance certificate authenticity.<br>
+<b>Positive findings for balance:</b> TLS 1.3 + AES-256 · valid Let's Encrypt cert · canonical HTTPS tag present · WordPress core current (7.0.7) · robots.txt + sitemap functional · ~500–600 ms server response · legally Active MCA-registered Pvt Ltd (CIN U18101TZ2009PTC015492) — the business is real; the website is the liability.<br>
+<br>
+Generated by automated + manual audit, 22 October 2026. Evidence reflects live fetches on audit date.
+</div>
+
+</body>
+</html>
