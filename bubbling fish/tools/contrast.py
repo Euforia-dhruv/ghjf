@@ -24,16 +24,20 @@ def ratio(fg, bg="#ffffff"):
     return round((hi + 0.05) / (lo + 0.05), 2)
 
 
-# Teal-blue palette (#086288/#04344B/#97D7FF/#FFEFC4) — every pair used (AA >= 4.5, UI >= 3)
-BG = "#086288"          # body / cream
-MIST = "#064f6e"        # .section.mist
-WHITE = "#04344b"       # .section.white (deep band)
-CARD = "#053850"        # --bg-card rgba(2,30,45,.75) over #086288 (computed)
-FOOT = "#04303f"        # footer
-GRAD_A = "#086288"      # --grad start
-GRAD_B = "#04344b"      # --grad end
-INPUT = "#052d47"       # form input bg rgba(4,40,60,.85) over BG (computed)
-TINT = "#275260"        # cream-tinted pill bg over card (computed)
+# Deep lagoon palette (#07506F/#042E44/#5FE3E0/#FF7A5A/#FFEFC4) — every pair used (AA >= 4.5, UI >= 3)
+BG = "#07506f"          # body / lagoon
+MIST = "#05405c"        # .section.mist
+WHITE = "#042e44"       # .section.white (deep band)
+CARD = "#032334"        # --bg-card rgba(1,20,32,.75) over #07506f (computed)
+FOOT = "#03212f"        # footer
+GRAD_A = "#07506f"      # --grad start
+GRAD_B = "#042e44"      # --grad end
+INPUT = "#042536"       # form input bg rgba(3,31,46,.88) over BG (computed)
+TINT = "#264048"        # cream-tinted pill bg over card (computed)
+CORAL = "#ff7a5a"       # --accent (actions)
+CORAL_H = "#ff9a7d"     # --accent-hover
+ON_ACCENT = "#04222f"   # text on coral
+OUTLINE = "#8fb0be"     # white .55 border over BG (computed)
 pairs = [
     ("ink on bg", "#ffefc4", BG),
     ("ink-soft on bg", "#f3e9cb", BG),
@@ -43,34 +47,35 @@ pairs = [
     ("ink on card", "#ffefc4", CARD),
     ("ink on mist", "#ffefc4", MIST),
     ("ink on white-sec", "#ffefc4", WHITE),
-    ("sky eyebrow/links on bg", "#bfe6ff", BG),
-    ("sky on card", "#bfe6ff", CARD),
-    ("sky on mist", "#bfe6ff", MIST),
-    ("sky on white-sec", "#bfe6ff", WHITE),
-    ("sky on grad start", "#bfe6ff", GRAD_A),
-    ("sky on grad end", "#bfe6ff", GRAD_B),
+    ("sky eyebrow/links on bg", "#9febff", BG),
+    ("sky on card", "#9febff", CARD),
+    ("sky on mist", "#9febff", MIST),
+    ("sky on white-sec", "#9febff", WHITE),
+    ("sky on grad start", "#9febff", GRAD_A),
+    ("sky on grad end", "#9febff", GRAD_B),
     ("links on bg", "#e0f4ff", BG),
     ("links on white-sec", "#e0f4ff", WHITE),
-    ("dark CTA: dark on cream", "#04344b", "#ffefc4"),
-    ("dark CTA hover: dark on sky", "#04344b", "#97d7ff"),
-    ("dark on cream age badge", "#04344b", "#ffefc4"),
+    ("dark on coral CTA", ON_ACCENT, CORAL),
+    ("dark on coral hover", ON_ACCENT, CORAL_H),
+    ("dark on coral age badge", ON_ACCENT, CORAL),
     ("white on grad start", "#ffffff", GRAD_A),
     ("white on grad end", "#ffffff", GRAD_B),
     ("white on footer", "#ffffff", FOOT),
     ("footer a 82% on footer", "#d1d1d1", FOOT),
-    ("sky hover on footer", "#bfe6ff", FOOT),
+    ("sky hover on footer", "#9febff", FOOT),
     ("err text on card", "#ff8a80", CARD),
-    ("req sky on card", "#bfe6ff", CARD),
-    ("req sky on input", "#bfe6ff", INPUT),
+    ("req sky on card", "#9febff", CARD),
+    ("req sky on input", "#9febff", INPUT),
     ("ink on input bg", "#ffefc4", INPUT),
     ("ink outline btn over white-sec", "#ffefc4", WHITE),
-    ("sky stat num on card (large)", "#97d7ff", CARD),
-    ("skip: dark on cream", "#04344b", "#ffefc4"),
+    ("aqua stat num on card (large)", "#5fe3e0", CARD),
+    ("skip: lagoon on cream", BG, "#ffefc4"),
     ("focus ring cream vs bg (UI 3:1)", "#ffefc4", BG),
     ("focus ring cream vs card (UI 3:1)", "#ffefc4", CARD),
-    ("day-chip sky on tint", "#bfe6ff", TINT),
-    ("slider-nav hover dark on cream", "#04344b", "#ffefc4"),
-    ("outline btn border vs bg (UI 3:1)", "#8fb7cb", BG),
+    ("day-chip sky on tint", "#9febff", TINT),
+    ("slider-nav hover dark on coral", ON_ACCENT, CORAL),
+    ("coral vs bg (UI 3:1)", CORAL, BG),
+    ("outline btn border vs bg (UI 3:1)", OUTLINE, BG),
 ]
 for name, fg, bg in pairs:
     r = ratio(fg, bg)
