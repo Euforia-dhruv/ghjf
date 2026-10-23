@@ -77,8 +77,8 @@ if (hdr) {
 }
 
 const RSEL =
-  ".sec__head, .index li, .spec > div, .mrow, .quotes li, .ledger__row, " +
-  ".feature, .docket__item, .contact__list > div, .press, .pull";
+  ".sec-head, .card, .stat, .feature, .press li, .pull, .quote-card, " +
+  ".split > div, .split figure, .spec > div, .contact-list > div, .form-card, .map-card";
 if (!reduceMotion) {
   const groups = new Map();
   $$(RSEL).forEach((el) => {

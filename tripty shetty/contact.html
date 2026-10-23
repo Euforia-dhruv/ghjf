@@ -7,7 +7,7 @@
   <meta name="description" content="Contact Tripti Shetty &amp; Associates — Shree Bungalow, opposite Dindoshi court, Goregaon East, Mumbai 400063. Call +91 98206 29737 / +91 87794 80145 or email trshetty@yahoo.co.in." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="assets/logo.png" />
   <meta property="og:title" content="Contact — Tripti Shetty &amp; Associates, Mumbai" />
@@ -62,19 +62,20 @@
     <section class="page-head">
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Home</a> / Contact</p>
+        <p class="kicker">Get in touch</p>
         <h1>Contact us</h1>
         <p>Facing a police notice, arrest or summons? Reach out — urgent bail matters are handled on priority.</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container contact">
+      <div class="container contact-grid">
 
-        <div class="contact__info">
-          <p class="label">Office</p>
-          <h2 class="h2">Tripti Shetty &amp; Associates</h2>
+        <div>
+          <p class="kicker">Office</p>
+          <h2>Tripti Shetty &amp; Associates</h2>
 
-          <dl class="contact__list">
+          <dl class="contact-list">
             <div>
               <dt>Address</dt>
               <dd>Shree Bungalow, 1st floor, opposite Dindoshi court, near Gokuldham temple, Goregaon East, Mumbai – 400063</dd>
@@ -97,74 +98,69 @@
             </div>
           </dl>
 
-          <div class="contact__map">
+          <div class="map-card">
             <iframe title="Tripti Shetty &amp; Associates office map" src="https://maps.google.com/maps?q=Shree%20Bungalow%2C%20Dindoshi%20Court%2C%20Goregaon%20East%2C%20Mumbai%20400063&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Shree+Bungalow+Dindoshi+Court+Goregaon+East+Mumbai+400063" target="_blank" rel="noopener">Open in Google Maps</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Shree+Bungalow+Dindoshi+Court+Goregaon+East+Mumbai+400063" target="_blank" rel="noopener">Open in Google Maps</a>
           </div>
 
-          <div class="contact__btns">
+          <div class="contact-btns">
             <a class="btn btn--solid" href="tel:+919820629737">Call now</a>
-            <a class="btn btn--outline" href="https://wa.me/919820629737?text=Hello%20Advocate%20Tripti%2C%20I%20need%20legal%20assistance." target="_blank" rel="noopener">WhatsApp us</a>
+            <a class="btn btn--wa" href="https://wa.me/919820629737?text=Hello%20Advocate%20Tripti%2C%20I%20need%20legal%20assistance." target="_blank" rel="noopener">WhatsApp us</a>
           </div>
         </div>
 
-        <form class="form" id="quoteForm" novalidate>
-          <div class="form__errors" id="formErrors" role="alert" tabindex="-1" hidden></div>
-          <div class="form__row">
-            <label>Name<input type="text" id="f-name" name="name" required placeholder="Your full name" /></label>
-            <label>Phone<input type="tel" id="f-phone" name="phone" required placeholder="+91 98xxx xxxxx" /></label>
-          </div>
-          <label>Email<input type="email" id="f-email" name="email" placeholder="you@example.com" /></label>
-          <label>Matter type
-            <select name="matter">
-              <option>Bail / Anticipatory Bail</option>
-              <option>POCSO</option>
-              <option>Domestic Violence / 498A</option>
-              <option>Cheque Bounce</option>
-              <option>Economic / Financial Offence</option>
-              <option>Criminal Appeal / Writ</option>
-              <option>Other</option>
-            </select>
-          </label>
-          <label>Describe your matter<textarea id="f-message" name="message" rows="5" required placeholder="What happened, which court, what stage is the case at…"></textarea></label>
-          <button type="submit" class="btn btn--solid btn--block">Send via WhatsApp</button>
-          <p class="form__note" id="formNote" role="status" hidden>Thanks! Your details are ready — WhatsApp will open to send them to the office. (Your details are only used to reply.)</p>
-          <p class="form__fine">Submitting opens WhatsApp with your details prefilled. Nothing is stored on this site.</p>
-        </form>
+        <div class="form-card">
+          <h2>Describe your matter</h2>
+          <p>The office replies on WhatsApp — urgent bail matters get priority.</p>
+          <form class="form" id="quoteForm" novalidate>
+            <div class="form__errors" id="formErrors" role="alert" tabindex="-1" hidden></div>
+            <div class="form__row">
+              <label>Name<input type="text" id="f-name" name="name" required placeholder="Your full name" /></label>
+              <label>Phone<input type="tel" id="f-phone" name="phone" required placeholder="+91 98xxx xxxxx" /></label>
+            </div>
+            <label>Email<input type="email" id="f-email" name="email" placeholder="you@example.com" /></label>
+            <label>Matter type
+              <select name="matter">
+                <option>Bail / Anticipatory Bail</option>
+                <option>POCSO</option>
+                <option>Domestic Violence / 498A</option>
+                <option>Cheque Bounce</option>
+                <option>Economic / Financial Offence</option>
+                <option>Criminal Appeal / Writ</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label>Describe your matter<textarea id="f-message" name="message" rows="5" required placeholder="What happened, which court, what stage is the case at…"></textarea></label>
+            <button type="submit" class="btn btn--solid btn--block">Send via WhatsApp</button>
+            <p class="form__note" id="formNote" role="status" hidden>Thanks! Your details are ready — WhatsApp will open to send them to the office. (Your details are only used to reply.)</p>
+            <p class="form__fine">Submitting opens WhatsApp with your details prefilled. Nothing is stored on this site.</p>
+          </form>
+        </div>
 
       </div>
     </section>
 
     <!-- BEFORE YOU COME -->
-    <section class="section section--tint">
+    <section class="section section--white">
       <div class="container">
-        <header class="sec__head">
-          <p class="label">Before you come</p>
+        <header class="sec-head">
+          <p class="kicker">Before you come</p>
           <h2>What to bring</h2>
         </header>
 
-        <div class="ledger">
-          <div class="ledger__row">
-            <span class="ledger__num">01</span>
-            <div>
-              <h3>Every document</h3>
-              <p>FIR copy, summon/notice, bail order, charge sheet, complaint — originals plus photocopies.</p>
-            </div>
-          </div>
-          <div class="ledger__row">
-            <span class="ledger__num">02</span>
-            <div>
-              <h3>The timeline</h3>
-              <p>Dates of arrest, remand, hearing — a simple written sequence helps more than a long narration.</p>
-            </div>
-          </div>
-          <div class="ledger__row">
-            <span class="ledger__num">03</span>
-            <div>
-              <h3>Identity proof</h3>
-              <p>Government photo ID of the person concerned and the person instructing the office.</p>
-            </div>
-          </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Every document</h3>
+            <p>FIR copy, summon/notice, bail order, charge sheet, complaint — originals plus photocopies.</p>
+          </article>
+          <article class="card">
+            <h3>The timeline</h3>
+            <p>Dates of arrest, remand, hearing — a simple written sequence helps more than a long narration.</p>
+          </article>
+          <article class="card">
+            <h3>Identity proof</h3>
+            <p>Government photo ID of the person concerned and the person instructing the office.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -172,10 +168,6 @@
   </main>
 
   <footer class="footer">
-    <div class="container footer__epigraph">
-      <p>&ldquo;One stop solution for <em>criminal law.</em>&rdquo;</p>
-      <span>Tripti Shetty &amp; Associates · Goregaon East, Mumbai</span>
-    </div>
     <div class="container footer__inner">
       <div>
         <a href="index.html" class="footer__brand"><img src="assets/logo-light.png" alt="Tripti Shetty &amp; Associates" /></a>
@@ -187,7 +179,7 @@
           <a href="http://goo.gl/HvHmgX" target="_blank" rel="noopener">JustDial</a>
         </div>
       </div>
-      <div>
+      <div class="footer__col">
         <h4>Pages</h4>
         <a href="about.html">About</a>
         <a href="practice.html">Practice Areas</a>
@@ -195,7 +187,7 @@
         <a href="testimonials.html">Reviews</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div>
+      <div class="footer__col">
         <h4>Reach us</h4>
         <a href="tel:+919820629737">+91 98206 29737</a>
         <a href="tel:+918779480145">+91 87794 80145</a>
@@ -205,11 +197,9 @@
     </div>
 
     <div class="container footer__legal">
-      <p>
-        Disclaimer: this website contains general information only and is not an advertisement,
-        solicitation or invitation of any kind. Nothing herein creates an advocate–client
-        relationship or constitutes legal advice — always seek independent legal advice for your matter.
-      </p>
+      Disclaimer: this website contains general information only and is not an advertisement,
+      solicitation or invitation of any kind. Nothing herein creates an advocate–client
+      relationship or constitutes legal advice — always seek independent legal advice for your matter.
     </div>
 
     <div class="container footer__bottom">
